@@ -1,5 +1,7 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
     module: {
@@ -7,31 +9,50 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: 'babel-loader'
                 }
             },
             {
-                test: /\.html$/,
+                test: /\.pug$/,
                 use: [{
-                    loader: "html-loader",
+                    loader: 'pug-loader',
                     options: {
                         minimize: true
                     }
                 }]
             },
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"]
+                test: /\.(scss|css)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                    'postcss-loader'
+                ]
+            },
+            {
+                test: /\.(gif|png|jpg|eot|wof|woff|woff2|ttf|svg)$/,
+                loader: 'url-loader'
             }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: false
+            }),
+            new OptimizeCSSAssetsPlugin({})
         ]
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
+            template: './src/index.pug',
+            filename: './index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: '[name].css',
             chunkFilename: "[id].css"
         })
     ]
