@@ -48,8 +48,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
+            inject: false,
             template: './src/index.pug',
-            filename: './index.html'
+            filename: "./index.html"
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
