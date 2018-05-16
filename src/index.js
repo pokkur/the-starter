@@ -1,4 +1,16 @@
-import style from "./main.css";
+import './main.css';
 
-const a = new Promise();
-const b = new Map();
+const A = new Promise(function (resolve, reject) {
+    resolve('success');
+    reject('reject');
+});
+
+A.then(function () {
+    console.log('then', ...arguments);
+});
+
+A.catch(function () {
+    console.log('catch', ...arguments);
+});
+
+const B = new Map();
