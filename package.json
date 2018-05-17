@@ -1,90 +1,107 @@
 {
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/polyfill": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
-    "autoprefixer": "^8.5.0",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^8.0.0-beta.2",
-    "css-loader": "^0.28.11",
-    "cssnano": "^3.10.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-nibble": "^4.2.1",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "file-loader": "^1.1.11",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.9.0",
-    "optimize-css-assets-webpack-plugin": "^4.0.1",
-    "postcss": "^6.0.22",
-    "postcss-loader": "^2.1.5",
-    "prettier": "^1.12.1",
-    "prettier-eslint": "^8.8.1",
-    "prettier-eslint-cli": "^4.7.1",
-    "pug": "^2.0.3",
-    "pug-loader": "^2.4.0",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "stylelint": "^9.2.0",
-    "stylelint-config-standard": "^18.2.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
-    "webpack-dev-server": "^3.1.4"
-  },
-  "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open",
-    "lint": "eslint src",
-    "nibble": "eslint-nibble src",
-    "prettier": "eslint --fix src"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "usage"
-        }
-      ]
-    ]
-  },
-  "browserslist": [
-    "> 1% in JP"
-  ],
-  "eslintConfig": {
-    "root": true,
-    "plugins": [
-      "prettier",
-      "standard"
-    ],
-    "extends": [
-      "standard",
-      "prettier",
-      "prettier/standard"
-    ],
-    "env": {
-      "es6": true,
-      "node": true
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "@babel/core": "^7.0.0-beta.47",
+        "@babel/polyfill": "^7.0.0-beta.47",
+        "@babel/preset-env": "^7.0.0-beta.47",
+        "autoprefixer": "^8.5.0",
+        "babel-eslint": "8",
+        "babel-loader": "^8.0.0-beta.2",
+        "css-loader": "^0.28.11",
+        "cssnano": "^3.10.0",
+        "eslint": "^4.19.1",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-config-standard": "^11.0.0",
+        "eslint-nibble": "^4.2.1",
+        "eslint-plugin-import": "^2.11.0",
+        "eslint-plugin-node": "^6.0.1",
+        "eslint-plugin-prettier": "^2.6.0",
+        "eslint-plugin-promise": "^3.7.0",
+        "eslint-plugin-standard": "^3.1.0",
+        "eslint-plugin-vue": "^4.5.0",
+        "file-loader": "^1.1.11",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.4.0",
+        "node-sass": "^4.9.0",
+        "optimize-css-assets-webpack-plugin": "^4.0.1",
+        "postcss": "^6.0.22",
+        "postcss-loader": "^2.1.5",
+        "prettier": "^1.12.1",
+        "prettier-eslint": "^8.8.1",
+        "prettier-eslint-cli": "^4.7.1",
+        "pug": "^2.0.3",
+        "pug-loader": "^2.4.0",
+        "pug-plain-loader": "^1.0.0",
+        "sass-loader": "^7.0.1",
+        "style-loader": "^0.21.0",
+        "stylelint": "^9.2.0",
+        "stylelint-config-standard": "^18.2.0",
+        "uglifyjs-webpack-plugin": "^1.2.5",
+        "url-loader": "^1.0.1",
+        "vue": "^2.5.16",
+        "vue-loader": "^15.0.11",
+        "vue-router": "^3.0.1",
+        "vue-style-loader": "^4.1.0",
+        "vue-template-compiler": "^2.5.16",
+        "webpack": "^4.8.3",
+        "webpack-cli": "^2.1.3",
+        "webpack-dev-server": "^3.1.4"
     },
-    "rules": {
-      "prettier/prettier": ["error", {
-        "semi": false,
-        "tabWidth": 4,
-        "singleQuote": true,
-        "bracketSpacing": true
-      }]
+    "scripts": {
+        "dev": "webpack --mode development",
+        "build": "webpack --mode production",
+        "start": "webpack-dev-server --mode development --open",
+        "lint": "eslint src/**/*.{js,vue}",
+        "nibble": "eslint-nibble src/**/*.{js,vue}",
+        "prettier": "eslint --fix src/**/*.{js,vue}"
+    },
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "useBuiltIns": "usage"
+                }
+            ]
+        ]
+    },
+    "browserslist": [
+        "> 1% in JP"
+    ],
+    "eslintConfig": {
+        "root": true,
+        "plugins": [
+            "prettier",
+            "standard"
+        ],
+        "extends": [
+            "standard",
+            "plugin:vue/recommended",
+            "prettier",
+            "prettier/standard"
+        ],
+        "env": {
+            "es6": true,
+            "node": true
+        },
+        "parserOptions": {
+            "parser": "babel-eslint",
+            "ecmaVersion": 2017,
+            "sourceType": "module"
+        },
+        "rules": {
+            "strict": 0,
+            "prettier/prettier": [
+                "error",
+                {
+                    "semi": false,
+                    "tabWidth": 4,
+                    "singleQuote": true,
+                    "bracketSpacing": true
+                }
+            ]
+        }
     }
-  }
 }

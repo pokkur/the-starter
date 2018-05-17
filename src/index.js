@@ -1,14 +1,8 @@
-const A = new Promise((resolve, reject) => {
-  resolve("success")
-  reject(new Error('failed'))
-})
+import App from './App.vue'
 
-A.then(function() {
-    console.log('then', ...arguments)
-})
+import './main.scss'
 
-A.catch(function() {
-    console.log('catch', ...arguments)
+new Vue({ // eslint-disable-line
+    el: '#app',
+    render: h => h(App)
 })
-
-const B = new Map()
