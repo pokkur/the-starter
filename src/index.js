@@ -1,3 +1,5 @@
+import './main.scss';
+
 const A = new Promise((resolve, reject) => {
   resolve("success")
   reject(new Error('failed'))

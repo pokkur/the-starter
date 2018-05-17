@@ -79,12 +79,15 @@
       "node": true
     },
     "rules": {
-      "prettier/prettier": ["error", {
-        "semi": false,
-        "tabWidth": 4,
-        "singleQuote": true,
-        "bracketSpacing": true
-      }]
+      "prettier/prettier": [
+        "error",
+        {
+          "semi": false,
+          "tabWidth": 4,
+          "singleQuote": true,
+          "bracketSpacing": true
+        }
+      ]
     }
   }
 }
