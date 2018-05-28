@@ -21,7 +21,7 @@ yarn
 | ---------------- | -------------------------------------------------- |
 | master           | no preprocessor                                    |
 | feature/extended | pug, scss, postcss, autoprefixer, eslint, prettier |
-| feature/vue      | feature/extend, vue                                |
+| feature/vue      | feature/extended, vue                              |
 
 ## Commands
 
