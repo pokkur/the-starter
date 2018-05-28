@@ -6,7 +6,7 @@
         "@babel/polyfill": "^7.0.0-beta.47",
         "@babel/preset-env": "^7.0.0-beta.47",
         "autoprefixer": "^8.5.0",
-        "babel-eslint": "8",
+        "babel-eslint": "^8.2.3",
         "babel-loader": "^8.0.0-beta.2",
         "css-loader": "^0.28.11",
         "cssnano": "^3.10.0",
@@ -23,11 +23,14 @@
         "file-loader": "^1.1.11",
         "html-loader": "^0.5.5",
         "html-webpack-plugin": "^3.2.0",
+        "husky": "^1.0.0-rc.8",
+        "lint-staged": "^7.1.2",
         "mini-css-extract-plugin": "^0.4.0",
         "node-sass": "^4.9.0",
         "optimize-css-assets-webpack-plugin": "^4.0.1",
         "postcss": "^6.0.22",
         "postcss-loader": "^2.1.5",
+        "pre-commit": "^1.2.2",
         "prettier": "^1.12.1",
         "prettier-eslint": "^8.8.1",
         "prettier-eslint-cli": "^4.7.1",
@@ -53,9 +56,20 @@
         "dev": "webpack --mode development",
         "build": "webpack --mode production",
         "start": "webpack-dev-server --mode development --open",
-        "lint": "eslint src/**/*.{js,vue}",
-        "nibble": "eslint-nibble src/**/*.{js,vue}",
-        "prettier": "eslint --fix src/**/*.{js,vue}"
+        "lint": "eslint src",
+        "stylelint": "stylelint 'src/**/*.scss'",
+        "nibble": "eslint-nibble src",
+        "prettier": "eslint --fix src"
+    },
+    "lint-staged": {
+        "*.scss": [
+            "stylelint",
+            "git add"
+        ],
+        "*.js": [
+            "prettier-eslint",
+            "git add"
+        ]
     },
     "babel": {
         "presets": [
@@ -70,6 +84,12 @@
     "browserslist": [
         "> 1% in JP"
     ],
+    "stylelint": {
+        "extends": "stylelint-config-standard",
+        "rules": {
+            "indentation": 2
+        }
+    },
     "eslintConfig": {
         "root": true,
         "plugins": [
@@ -78,7 +98,6 @@
         ],
         "extends": [
             "standard",
-            "plugin:vue/recommended",
             "prettier",
             "prettier/standard"
         ],
@@ -86,13 +105,7 @@
             "es6": true,
             "node": true
         },
-        "parserOptions": {
-            "parser": "babel-eslint",
-            "ecmaVersion": 2017,
-            "sourceType": "module"
-        },
         "rules": {
-            "strict": 0,
             "prettier/prettier": [
                 "error",
                 {
@@ -102,6 +115,11 @@
                     "bracketSpacing": true
                 }
             ]
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
         }
     }
 }

@@ -1,6 +1,13 @@
 # Usage
 
-## setup
+## Change Info
+
+### 2018-05-28
+
+- add stylelint
+- add pre-commit linting
+
+## Setup
 
 install npm
 
@@ -8,16 +15,14 @@ install npm
 yarn
 ```
 
-## branch
+## Branches
 
 |      branch      |                  description                  |
 | ---------------- | --------------------------------------------- |
 | master           | no preprocessor                               |
 | feature/extended | pug,scss,postcss,autoprefixer,eslint,prettier |
 
-
-<<<<<<< HEAD
-## command
+## Commands
 
 |    command    |         script         |
 | ------------- | ---------------------- |
@@ -27,15 +32,7 @@ yarn
 | yarn lint     | eslint                 |
 | yarn nibble   | eslint結果の概要を表示 |
 | yarn prettier | prettier               |
-=======
-## commands
 
-|    command    |         script         |
-| ------------- | ---------------------- |
-| `yarn dev`      | 開発ビルド             |
-| `yarn build`    | リリースビルド         |
-| `yarn start`    | webpack-dev-server     |
-| `yarn lint`     | eslint                 |
-| `yarn nibble`   | eslint結果の概要を表示 |
-| `yarn prettier` | prettier               |
->>>>>>> master
+## Plans
+
+- [ ] imagemin
