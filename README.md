@@ -38,3 +38,4 @@ yarn
 
 - [ ] imagemin
 - [ ] storybook
+- [ ] AMP
