@@ -1,8 +1,8 @@
-import './main.scss';
+import './main.scss'
 
 const A = new Promise((resolve, reject) => {
-  resolve("success")
-  reject(new Error('failed'))
+    resolve('success')
+    reject(new Error('failed'))
 })
 
 A.then(function() {
@@ -13,4 +13,4 @@ A.catch(function() {
     console.log('catch', ...arguments)
 })
 
-const B = new Map()
+// const B = new Map()
