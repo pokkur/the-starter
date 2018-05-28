@@ -26,6 +26,7 @@ yarn
 | yarn start    | webpack-dev-server     |
 | yarn lint     | eslint                 |
 | yarn nibble   | eslint結果の概要を表示 |
+<<<<<<< HEAD
 | yarn prettier | prettier               |
 =======
 ## commands
@@ -39,3 +40,6 @@ yarn
 | `yarn nibble`   | eslint結果の概要を表示 |
 | `yarn prettier` | prettier               |
 >>>>>>> master
+=======
+| yarn prettier | prettier               |
+>>>>>>> 028a4f43ee8493796e4ab59aa684f50a26574d43

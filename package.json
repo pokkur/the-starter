@@ -98,6 +98,7 @@
         ],
         "extends": [
             "standard",
+            "plugin:vue/recommended",
             "prettier",
             "prettier/standard"
         ],
@@ -105,7 +106,13 @@
             "es6": true,
             "node": true
         },
+        "parserOptions": {
+            "parser": "babel-eslint",
+            "ecmaVersion": 2017,
+            "sourceType": "module"
+        },
         "rules": {
+            "strict": 0,
             "prettier/prettier": [
                 "error",
                 {

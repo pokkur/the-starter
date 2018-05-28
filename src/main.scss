@@ -5,27 +5,29 @@ $medium: "only screen and (min-width:577px) and (max-width:992px)";
 $large : "only screen and (min-width:993px)";
 
 body {
-    color:$color;
+  color: $color;
 
-    &::after {
-        position: fixed;
-        display: block;
-        right: 0;
-        bottom: 0;
+  &::after {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
 
-        @media #{$small} {
-            content: 'small';
-        }
-        @media #{$medium} {
-            content: 'medium';
-        }
-        @media #{$large} {
-            content: 'large';
-        }
+    @media #{$small} {
+      content: 'small';
     }
+
+    @media #{$medium} {
+      content: 'medium';
+    }
+
+    @media #{$large} {
+      content: 'large';
+    }
+  }
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
