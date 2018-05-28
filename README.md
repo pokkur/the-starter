@@ -17,10 +17,11 @@ yarn
 
 ## Branches
 
-|      branch      |                  description                  |
-| ---------------- | --------------------------------------------- |
-| master           | no preprocessor                               |
-| feature/extended | pug,scss,postcss,autoprefixer,eslint,prettier |
+|      branch      |                    description                     |
+| ---------------- | -------------------------------------------------- |
+| master           | no preprocessor                                    |
+| feature/extended | pug, scss, postcss, autoprefixer, eslint, prettier |
+| feature/vue      | feature/extend, vue                                |
 
 ## Commands
 
@@ -36,3 +37,4 @@ yarn
 ## Plans
 
 - [ ] imagemin
+- [ ] storybook
