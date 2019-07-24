@@ -4,7 +4,7 @@
 
 ### 2019-07-24
 
-- Renrefurbish ovate to React base starter
+- Refurbish
 
 ### 2019-07-15
 
