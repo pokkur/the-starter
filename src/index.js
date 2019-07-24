@@ -1,8 +1,14 @@
-import App from './App.vue'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from '@/reducers'
+import App from '@/components/pages/App'
+import '@/assets/style/style.scss'
 
-import './main.scss'
+const store = createStore(rootReducer)
 
-new Vue({ // eslint-disable-line
-    el: '#app',
-    render: h => h(App)
-})
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+)

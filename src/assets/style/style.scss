@@ -1,0 +1,29 @@
+@import "~foundation-sites/scss/foundation";
+@import "common/setting";
+
+body {
+    color: $color;
+
+    &::after {
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+
+        @include breakpoint(small only) {
+            content: "small";
+        }
+
+        @include breakpoint(medium only) {
+            content: "medium";
+        }
+
+        @include breakpoint(large up) {
+            content: "large";
+        }
+    }
+}
+
+#root {
+    dispay: flex;
+}

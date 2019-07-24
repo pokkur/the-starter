@@ -1,36 +1,101 @@
-const ProvidePlugin = require("webpack/lib/ProvidePlugin");
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const path = require('path')
+const ProvidePlugin = require('webpack/lib/ProvidePlugin')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const Fiber = require('fibers')
 
-module.exports = {
+const devMode = process.env.NODE_ENV === 'development'
+
+module.exports = (env, argv) => ({
+    entry: path.join(__dirname, '/src/index.js'),
+    output: {
+        path: path.join(__dirname, '/dist'),
+        filename: 'bundle.js'
+    },
+    stats: {
+        chunks: false,
+        hash: true,
+        entrypoints: false,
+        errors: true,
+        errorDetails: true,
+        modules: false,
+        moduleTrace: false,
+        version: false
+    },
+    devtool: 'source-map',
+    devServer: {
+        watchContentBase: true,
+        contentBase: path.resolve(__dirname, 'dist'),
+        port: 8081
+    },
+    resolve: {
+        alias: {
+            '@': path.join(__dirname, '/src/'),
+            react: path.resolve(path.join(__dirname, './node_modules/react')),
+            'react-dom': path.resolve(path.join(__dirname, './node_modules/@hot-loader/react-dom'))
+        }
+    },
     module: {
-        rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader'
+        rules: [
+            {
+                enforce: 'pre',
+                exclude: /node_modules/,
+                test: /\.js$/,
+                loader: 'eslint-loader'
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/react']
+                    }
                 }
             },
             {
-                test: /\.pug$/,
-                loader: 'pug-plain-loader'
-            },
-            {
-                test: /\.(scss|css)$/,
+                test: /\.(css|scss)$/,
                 use: [
-                    'vue-style-loader',
-                    MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    'postcss-loader',
-                    "sass-loader"
-                ],
+                    {
+                        loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        options: {
+                            // publicPath: '../',
+                            hmr: process.env.NODE_ENV === 'development',
+                            reloadAll: true,
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                ctx: {
+                                    'postcss-preset-env': {
+                                        stage: 3
+                                    },
+                                    cssnano: {
+                                        calc: false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            implementation: require('sass'),
+                            fiber: Fiber
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(gif|png|jpg|eot|wof|woff|woff2|ttf|svg)$/,
@@ -40,26 +105,39 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: false
+            new TerserPlugin({
+                terserOptions: {
+                    ecma: 6,
+                    output: {
+                        comments: false,
+                        beautify: false
+                    },
+                    compress: {
+                        drop_console: true
+                    },
+                    cache: true,
+                    parallel: true,
+                    sourceMap: true,
+                    extractComments: 'all',
+                    keep_classnames: true
+                }
             }),
             new OptimizeCSSAssetsPlugin({})
         ]
     },
     plugins: [
         new HtmlWebPackPlugin({
-            inject: false,
-            template: './src/index.html',
-            filename: "./index.html"
+            inject: 'body',
+            template: path.join(__dirname, '/src/index.html')
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css'
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false
         }),
-        new VueLoaderPlugin(),
         new ProvidePlugin({
-            Vue: ['vue/dist/vue.esm.js', 'default']
+            React: 'react',
+            ReactDOM: 'react-dom'
         })
     ]
-};
+})
