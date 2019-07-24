@@ -2,6 +2,14 @@
 
 ## Change Info
 
+### 2019-07-24
+
+- Renrefurbish ovate to React base starter
+
+### 2019-07-15
+
+- from Vue to React
+
 ### 2018-05-28
 
 - add stylelint
@@ -9,33 +17,34 @@
 
 ## Setup
 
-install npm
+install packages
 
 ```sh
 yarn
 ```
 
-## Branches
+## Versions
 
-|      branch      |                    description                     |
-| ---------------- | -------------------------------------------------- |
-| master           | no preprocessor                                    |
-| feature/extended | pug, scss, postcss, autoprefixer, eslint, prettier |
-| feature/vue      | feature/extended, vue                              |
+|      branch      |                  description                  |
+| ---------------- | --------------------------------------------- |
+| master           | react,redux,jest                              |
+| feature/vue      | vue                                           |
+| feature/extended | pug,scss,postcss,autoprefixer,eslint,prettier |
 
 ## Commands
 
-|    command    |         script         |
-| ------------- | ---------------------- |
-| yarn dev      | 開発ビルド             |
-| yarn build    | リリースビルド         |
-| yarn start    | webpack-dev-server     |
-| yarn lint     | eslint                 |
-| yarn nibble   | eslint結果の概要を表示 |
-| yarn prettier | prettier               |
+|     command     |         script         |
+| --------------- | ---------------------- |
+| yarn dev        | 開発ビルド             |
+| yarn build      | リリースビルド         |
+| yarn start      | webpack-dev-server     |
+| yarn lint       | eslint,stylelint       |
+| ~~yarn nibble~~ | eslint結果の概要を表示 |
+| yarn prettier   | prettier               |
 
-## Plans
+## Todo
 
+- [ ] Speed Measure Plugin (stylelint-processor-styled-components issue)
+- [ ] nibble setting
+- [ ] [react-axe](https://github.com/dequelabs/react-axe)
 - [ ] imagemin
-- [ ] storybook
-- [ ] AMP
