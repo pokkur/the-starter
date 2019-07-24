@@ -1,0 +1,23 @@
+// Foundation Setting (https://foundation.zurb.com/sites/docs/sass.html)
+@import "~foundation-sites/scss/util/util";
+$breakpoints: (
+    small: 0,
+    medium: 576px,
+    large: 992px,
+    xlarge: 1200px,
+    xxlarge: 1440px
+);
+
+@include foundation-xy-grid-classes(
+    $base-grid: true,
+    $margin-grid: true,
+    $padding-grid: true,
+    $block-grid: true,
+    $collapse: true,
+    $offset: true,
+    $vertical-grid: true,
+    $frame-grid: true
+);
+
+// Unique Priority Setting
+$color: gray;

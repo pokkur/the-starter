@@ -1,16 +1,14 @@
-import './main.css';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from '@/reducers'
+import App from '@/components/pages/App'
+import '@/assets/style/style.scss'
 
-const A = new Promise(function (resolve, reject) {
-    resolve('success');
-    reject('reject');
-});
+const store = createStore(rootReducer)
 
-A.then(function () {
-    console.log('then', ...arguments);
-});
-
-A.catch(function () {
-    console.log('catch', ...arguments);
-});
-
-const B = new Map();
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+)
