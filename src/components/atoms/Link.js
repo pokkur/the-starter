@@ -20,7 +20,7 @@ Link.propTypes = {
 }
 
 const Button = styled.button`
-    colo:initial;
+    color: initial;
     font-size: 10px;
 `
 
