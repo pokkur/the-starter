@@ -16,17 +16,18 @@
 | templates | organismsを組み合わせたもの。                                                     |                               |
 | pages     | reduxにおける `Containerコンポーネント`                                           |                               |
 
+#### 備考
+
 - organismsは別のorganismを内包できるし、直下にatomsを置くことも出来る。
-- moleculeは他のmoleculeに依存してはならない。
+- moleculesは他のmoleculesに依存してはならない。
 
+## その他
 
-
-- importは絶対パスで指定する
-    ごちゃついてきたら適宜alias設定する。[参考](https://medium.com/@justintulk/solve-module-import-aliasing-for-webpack-jest-and-vscode-74007ce4adc9)
+- importは絶対パスで指定する ※[ごちゃついてきたら適宜alias設定する](https://medium.com/@justintulk/solve-module-import-aliasing-for-webpack-jest-and-vscode-74007ce4adc9)
 
 
 ## 展望
 
-Atomic designはコンポーネント志向での開発において、割とスタンダードなデザイン手法だが、
+Atomic designはコンポーネント志向型開発において、割とスタンダードなデザイン手法だが、
 難解だし、いつまでたっても解釈がまとまらない。
 派生したデザイン手法を生み出したい。
