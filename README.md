@@ -5,6 +5,7 @@
 ### 2019-07-24
 
 - Refurbish
+- add pre-push linting and testing
 
 ### 2019-07-15
 
